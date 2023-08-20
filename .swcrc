@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "module": {
+    "type": "commonjs"
+  },
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "dynamicImport": false,
+      "importAssertions": true,
+      "decorators": false,
+      "dts": true
+    },
+    // "minify": {
+    //   "compress": {
+    //     "unused": true
+    //   },
+    //   "mangle": true
+    // },
+    "preserveAllComments": false,
+    "target": "es5",
+    "loose": false,
+    "externalHelpers": false,
+    // Requires v1.2.50 or upper and requires target to be es2016 or upper.
+    "keepClassNames": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@/util/*": ["util/*"]
+    }
+    // "experimental": {
+    //   "plugins": [
+    //     ["typescript-transform-paths", {}]
+    //   ]
+    // }
+  },
+  "minify": false
+  // "minify": true
+}

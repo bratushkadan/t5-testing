@@ -1,5 +1,4 @@
-import path from 'node:path'
+import { dirname, join as joinPath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import { expressPingMiddleware } from '@/lib/server'
-
-console.log(path.join(__dirname, 'foo.txt'))
+console.log(joinPath(dirname(fileURLToPath(import.meta.url)), 'foo.txt'));

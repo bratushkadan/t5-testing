@@ -1,0 +1,99 @@
+endpoints:
+  /api/v1/:
+    /auth/me: # возвращает информацию о пользователе по токену
+      - method: POST
+        query:
+          token: string
+        response:
+          - status: 200
+            body:
+              id: number
+              username: string
+          - status: 400 # токен не предоставлен
+            body:
+              error: string
+          - status: 401 # токен неверный
+            body:
+              error: string
+    /auth/token: # логин; если такой комбинации username + password нет, то нужно создать этого пользователя; возвращает токен
+      - method: GET
+        query:
+          username: string
+          password: string
+        response:
+          - status: 200
+            body:
+              token: string
+              id: number
+              username: string
+          - status: 400
+            body:
+              error: string
+          - status: 401
+            body:
+              error: string
+    /birthday:
+      - method: POST
+        query:
+          token: string
+          date: number # unix timestamp (js Date.now())
+          user_id: number # id текущего пользователя
+          friend_name: string
+        response:
+          - status: 200
+            body:
+              date: number # unix timestamp (js Date.now())
+              user_id: number # id текущего пользователя
+              friend_name: string
+              time_created: number # unix timestamp — дата создания записи о ДР пользователя
+          - status: 409
+            body:
+              error: string # already exists
+          - status: 400
+            body:
+              error: string # bad request
+          - status: 401
+            body:
+              error: string # unauthorized
+      - method: DELETE
+        query:
+          token: string
+          user_id: number # id текущего пользователя
+          friend_name: string
+        response:
+          - status: 200
+            body:
+              date: number # unix timestamp (js Date.now())
+              user_id: number # id текущего пользователя
+              friend_name: string
+          - status: 400
+            body:
+              error: string # bad request
+          - status: 404
+            body:
+              error: string
+          - status: 401
+            body:
+              error: string # unauthorized
+    /birthdays:
+      - method: GET
+        query:
+          token: string
+          user_id: number # id текущего пользователя
+        response:
+          - status: 200
+            body:
+              type: array
+              structure:
+                date: number # unix timestamp (js Date.now())
+                user_id: number # id текущего пользователя
+                friend_name: string
+                time_created: number # unix timestamp — дата создания записи о ДР пользователя
+          - status: 400
+            body:
+              error: string # bad request
+          - status: 401
+            body:
+              error: string # unauthorized
+
+

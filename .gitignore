@@ -2,3 +2,5 @@ build/**/*
 .swc/**/*
 node_modules
 
+# artifacts
+db.json

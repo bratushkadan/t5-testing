@@ -1,11 +1,9 @@
-# TypeScript scaffolding using SWC
+# Birthdays server
 
-## Commands
+## Setup
 
-### npm
+1. `npm run ci`
 
-`command` — run an arbitrary script in *src/* directory. Examples:
+## Start the server
 
-```sh
-npm run command -- build/command/hello.js # runs src/command/hello.ts script
-```
+1. `npm run command -- build/index`
